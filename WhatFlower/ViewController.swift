@@ -9,13 +9,17 @@
 import UIKit
 import CoreML
 import Vision
+import SwiftyJSON
+import Alamofire
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var capturedImageView: UIImageView!
+    @IBOutlet weak var extractLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
-    
+    let wikipediaURL = "https://en.wikipedia.org/w/api.php"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +55,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             if let firstResult = results.first {
                 self.navigationItem.title = firstResult.identifier.capitalized
+                self.getData(flowerName: firstResult.identifier)
             }
         }
         
@@ -61,6 +66,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         } catch {
             print(error)
         }
+    }
+    
+    func getData(flowerName: String) {
+        let parameters : [String:String] = [
+            "format" : "json",
+            "action" : "query",
+            "prop" : "extracts",
+            "exintro" : "",
+            "explaintext" : "",
+            "titles" : flowerName,
+            "indexpageids" : "",
+            "redirects" : "1",
+            ]
+        
+        Alamofire.request(wikipediaURL, method: .get, parameters: parameters).responseJSON { (response) in
+            if response.result.isSuccess, let resultValue = response.result.value {
+                print("Successful retrieval of wiki information")
+                
+                let flowerJSON: JSON = JSON(resultValue)
+                let pageID = flowerJSON["query"]["pageids"][0].stringValue
+                self.extractLabel.text = flowerJSON["query"]["pages"][pageID]["extract"].stringValue
+            } else {
+                print("Error: \(String(describing: response.result.error))")
+            }
+        }
+        
     }
     
     @IBAction func cameraPressed(_ sender: UIBarButtonItem) {
