@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,26 +20,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fwy-JB-1E0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="342"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fwy-JB-1E0">
+                                <rect key="frame" x="0.0" y="64" width="187.5" height="187.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fwy-JB-1E0" secondAttribute="height" id="eJS-N7-1Ic"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qa9-3d-nhd" userLabel="Wiki Extract">
-                                <rect key="frame" x="16" y="422" width="343" height="229"/>
+                                <rect key="frame" x="16" y="267.5" width="343" height="383.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1nY-Wa-15S" userLabel="Wiki Image">
+                                <rect key="frame" x="187.5" y="64" width="187.5" height="187.5"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fwy-JB-1E0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="81U-tx-5rA"/>
-                            <constraint firstItem="qa9-3d-nhd" firstAttribute="top" secondItem="fwy-JB-1E0" secondAttribute="bottom" constant="16" id="HZ0-0w-1Xa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fwy-JB-1E0" secondAttribute="trailing" id="KRK-er-5UN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qa9-3d-nhd" secondAttribute="bottom" constant="16" id="Msp-RV-oT4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qa9-3d-nhd" secondAttribute="trailing" constant="16" id="SKA-JU-KcO"/>
-                            <constraint firstItem="qa9-3d-nhd" firstAttribute="height" secondItem="fwy-JB-1E0" secondAttribute="height" multiplier="2:3" id="cDE-th-kGJ"/>
-                            <constraint firstItem="qa9-3d-nhd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="upj-Ul-d9k"/>
-                            <constraint firstItem="fwy-JB-1E0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vUb-4V-U0r"/>
+                            <constraint firstItem="fwy-JB-1E0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EHa-uH-g2G"/>
+                            <constraint firstItem="1nY-Wa-15S" firstAttribute="width" secondItem="fwy-JB-1E0" secondAttribute="width" id="Fik-em-dhH"/>
+                            <constraint firstItem="qa9-3d-nhd" firstAttribute="top" secondItem="fwy-JB-1E0" secondAttribute="bottom" constant="16" id="In2-WZ-UPm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qa9-3d-nhd" secondAttribute="trailing" constant="16" id="K2K-Cz-TXw"/>
+                            <constraint firstItem="qa9-3d-nhd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Kui-Ml-77v"/>
+                            <constraint firstItem="1nY-Wa-15S" firstAttribute="top" secondItem="fwy-JB-1E0" secondAttribute="top" id="KxK-1B-Q3U"/>
+                            <constraint firstItem="1nY-Wa-15S" firstAttribute="height" secondItem="fwy-JB-1E0" secondAttribute="height" id="OrJ-ny-aO8"/>
+                            <constraint firstItem="fwy-JB-1E0" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:2" id="Tm3-8g-SsC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qa9-3d-nhd" secondAttribute="bottom" constant="16" id="VMP-DO-Nbm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1nY-Wa-15S" secondAttribute="trailing" id="o36-nj-Pnu"/>
+                            <constraint firstItem="fwy-JB-1E0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="o5l-HL-ByD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -52,6 +62,7 @@
                     <connections>
                         <outlet property="capturedImageView" destination="fwy-JB-1E0" id="fcz-hE-gUb"/>
                         <outlet property="extractLabel" destination="qa9-3d-nhd" id="3Ws-XV-Ym6"/>
+                        <outlet property="wikiImage" destination="1nY-Wa-15S" id="vmN-z8-lUQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
